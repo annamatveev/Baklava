@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'guesses/index'
-
-  resources :users
+  resources :users do
+    member do
+      get  'photos' => 'users#photos'
+      post 'photos' => 'users#add_photo'
+    end
+  end
   resources :photos
-  root 'static_pages#home'
 end
